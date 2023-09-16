@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> 
-    <title>Coding Quiz</title>
+    <title>Weather Forecast</title>
 </head>
 
 <body>
@@ -14,58 +14,127 @@
 
 <!-- Navbar -->
 <nav class="container">
-    <!-- Latitude -->
+    <!--City -->
     <div class="row align-items-center py-2">
     <div class="input-group col-sm"></div>
-    <span class="input-group-text" id="basic-addon1">Lat</span>
+    <span class="input-group-text" id="basic-addon1">Search for a City</span>
     <input
         type="text"
         class="form-control"
-        inputmode="numeric"
-        id="latitude"
-        placeholder="latitude"
-        value="30.27"
+        id="city"
+        placeholder="city"
     />
     </div>
     </div>  
 
-    <!-- Longitude -->
-    <div class="row align-items-center py-2">
-        <div class="input-group col-sm"></div>
-        <span class="input-group-text" id="basic-addon1">Lon</span>
-        <input
-            type="text"
-            class="form-control"
-            inputmode="numeric"
-            id="longitude"
-            placeholder="longitude"
-            value="-97.73"
-        />
-        </div>
-        </div> 
     
     <!-- Button -->
     <div class="row align-items-center py-2">
         <div class="col-auto me-auto">
             <button id="btnGet" type="button" class="btn btn primary">
-                Get Weather
-            </button>
-            <button id="btnCurrent" type="button" class="btn btn primary">
-                Use Current Location
+                Search
             </button>
         </div>
     </div>
 </nav>
 
-
+<!-- Weather Data -->
 <main class="container">
+    <h2>Weather</h2>
+    <div class="weather container">
+        <div class="row align-items-start">
+            <div id="day1" class="card col" style="width:20vw">
+                <h5 class="card-title p-2">Date</h5>
+                <!-- Icon -->
+                <img
+                id="icon1"
+                class="card-img-top"
+                alt="weather description"
+                />
+                <div class="card-body">
+                    <h3 class="card-title">Weather Label</h3>
+                    <p class="card-text">Max Temp</p>
+                    <p class="card-text">Min Temp</p>
+                    <p class="card-text">Humidity</p>
+                    <p class="card-text">Wind Speed</p>
+                </div>
+            </div>
+            
+            
+            <div id="day2" class="card col" style="width:20vw">
+                <h5 class="card-title p-2">Date</h5>
+                <!-- Icon -->
+                <img
+                id="icon1"
+                class="card-img-top"
+                alt="weather description"
+                />
+                <div class="card-body">
+                    <h3 class="card-title">Weather Label</h3>
+                    <p class="card-text">Max Temp</p>
+                    <p class="card-text">Min Temp</p>
+                    <p class="card-text">Humidity</p>
+                    <p class="card-text">Wind Speed</p>
+                </div>
+            </div>
+            
+
+            <div id="day3" class="card col" style="width:20vw">
+                <h5 class="card-title p-2">Date</h5>
+                <!-- Icon -->
+                <img
+                id="icon1"
+                class="card-img-top"
+                alt="weather description"
+                />
+                <div class="card-body">
+                    <h3 class="card-title">Weather Label</h3>
+                    <p class="card-text">Max Temp</p>
+                    <p class="card-text">Min Temp</p>
+                    <p class="card-text">Humidity</p>
+                    <p class="card-text">Wind Speed</p>
+                </div>
+            </div>
+        
+
+            <div id="day4" class="card col" style="width:20vw">
+                <h5 class="card-title p-2">Date</h5>
+                <!-- Icon -->
+                <img
+                id="icon1"
+                class="card-img-top"
+                alt="weather description"
+                />
+                <div class="card-body">
+                    <h3 class="card-title">Weather Label</h3>
+                    <p class="card-text">Max Temp</p>
+                    <p class="card-text">Min Temp</p>
+                    <p class="card-text">Humidity</p>
+                    <p class="card-text">Wind Speed</p>
+                </div>
+            </div>
+             
+             
+            <div id="day5" class="card col" style="width:20vw">
+                <h5 class="card-title p-2">Date</h5>
+                <!-- Icon -->
+                <img
+                id="icon1"
+                class="card-img-top"
+                alt="weather description"
+                />
+                <div class="card-body">
+                    <h3 class="card-title">Weather Label</h3>
+                    <p class="card-text">Max Temp</p>
+                    <p class="card-text">Min Temp</p>
+                    <p class="card-text">Humidity</p>
+                    <p class="card-text">Wind Speed</p>
+                </div>    
+            </div>
+        </div>
+    </main>
     <!-- 
     City Name
-    Date
-    Icon
-    Temp
-    Humidity
-    Wind Speed
     5 day Forecast 
 -->
 </main>
