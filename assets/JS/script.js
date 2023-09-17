@@ -1,16 +1,23 @@
 var APIKey = "6636d0f4895a55da96fb3ffcd29a6dd1";
-var city = "";
-// var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+var searchButton = document.getElementById("searchBtn")
+const city = document.getElementById("cityInput").value;
+var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 
+// Search Button
+searchButton.addEventListener('click', getCity);
+
+// Get city name
+function getCity() {
+    document.getElementById("cityName").innerHTML = city;
+    console.log("button clicked");
+}
 
 // Fetch weather data for city
 
 function fetchWeather(query) {
-    var url = "http://api.openweathermap.org/data/2.5/weather?q=Austin&appid=6636d0f4895a55da96fb3ffcd29a6dd1";
     console.log('test');
-    fetch(url)
+    fetch(queryURL)
         .then(function (response) {
-            console.log('anything');
             return response.json();
         })
         .then(function (data) {
@@ -22,4 +29,3 @@ function fetchWeather(query) {
 
 // ("http://api.openweathermap.org/data/2.5/weather?q=Austin&appid=6636d0f4895a55da96fb3ffcd29a6dd1");
 
-fetchWeather();
