@@ -36,11 +36,13 @@ function fetchWeather(query) {
             let humidity = (data.main.humidity);
             let windSpeed = (data.wind.speed);
             let weatherIcon = (data.weather.icon);
+            let lat = (data.coord.lat);
+            let lon = (data.coord.lon);
 
-            document.getElementById("date1").innerHTML = date;
-            document.getElementById("temp1").innerText = temp.toString();
-            document.getElementById("humidity1").innerText = humidity.toString();
-            document.getElementById("windSpeed1").innerText = windSpeed.toString();
+            document.getElementById("currentDate").innerHTML = date;
+            document.getElementById("currentTemp").innerText = temp.toString();
+            document.getElementById("currentHumidity").innerText = humidity.toString();
+            document.getElementById("currentWindSpeed").innerText = windSpeed.toString();
 
             // icon1 = document.getElementById("icon1");
             // // Icons
@@ -48,7 +50,7 @@ function fetchWeather(query) {
             //     icon1.src = "http://openweathermap.org/img/w/10d.png";
             // }
             console.log(data);
-        forecastWeather(data.coord.lat, data.coord.lon);
+        forecastWeather(lat, lon);
         }); 
       
     };
@@ -65,17 +67,26 @@ function forecastWeather(latitude, longitude) {
         })
         .then(function (data) {
             console.log(data);
-            let date = new Date(data.list.dt);
-            let temp = (data.list.main.temp);
-            let humidity = (data.list.main.humidity);
-            let windSpeed = (data.list.wind.speed);
-            let weatherIcon = (data.weather.icon);
+            for(let i=0;i<=5;i++) {
+            let forecast = data.list[i];
+            let date = new Date(forecast.dt*1000);
+            let temp = (forecast.main.temp);
+            let humidity = (forecast.main.humidity);
+            let windSpeed = (forecast.wind.speed);
+            // let weatherIcon = (forecast.weather.icon[0]);
+
             
-        })
+            document.getElementById('date${i + 1').innerHTML = date;
+            }  
+            
+        });
+    
+        
 };
 
 
 
 
 // ("http://api.openweathermap.org/data/2.5/weather?q=Austin&appid=6636d0f4895a55da96fb3ffcd29a6dd1");
+// http://api.openweathermap.org/data/2.5/forecast?q=Austin&appid=6636d0f4895a55da96fb3ffcd29a6dd1
 
