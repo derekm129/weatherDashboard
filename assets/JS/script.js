@@ -1,24 +1,46 @@
 var APIKey = "6636d0f4895a55da96fb3ffcd29a6dd1";
 var searchButton = document.getElementById("searchBtn");
+let cityList = [];
 
+// dropdown
+// function myFunction() {
+//     document.getElementById("myDropdown").classList.toggle("show");
+//   }
+  
+//   // Close the dropdown menu if the user clicks outside of it
+//   window.onclick = function(event) {
+//     if (!event.target.matches('.dropbtn')) {
+//       var dropdowns = document.getElementsByClassName("dropdown-content");
+//       var i;
+//       for (i = 0; i < dropdowns.length; i++) {
+//         var openDropdown = dropdowns[i];
+//         if (openDropdown.classList.contains('show')) {
+//           openDropdown.classList.remove('show');
+//         }
+//       }
+//     }
+//   }
 
 // const city = document.getElementById("cityInput");
 // var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 
 // Search Button
 searchButton.addEventListener('click', fetchWeather, forecastWeather);
+    var city = document.getElementById('cityInput').value;
+    fetchWeather(city);
 
-// Get city name
+// // Get city name
 // function getCity() {
-//     let city = document.getElementById("cityInput").value;
-//     document.getElementById("cityName").innerHTML = city;
-//     console.log("button clicked");
-// }
+//     let storedCity = localStorage.getItem("city");
+//     // document.getElementById("savedCities").innerHTML = storedCity;
+//     // cityList.add(storedCity);
 
+// }
 // Fetch weather data for city
 // Current Weather
 function fetchWeather(query) {
     let city = document.getElementById("cityInput").value;
+    localStorage.setItem("city", city);
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
     document.getElementById("cityName").innerHTML = city;
     console.log("button clicked");
@@ -105,34 +127,46 @@ function forecastWeather(query) {
                 forecastContainer.appendChild(forecastWindspeed);
 
 
-            //     let forecastHTML = `  <div id="day1" class="card col" style="width:20vw">
-            //     <h5 id="date1" class="card-title p-2">${date}</h5>
-            //     <!-- Icon -->
-            //     <!-- <img
-            //     src="assets/images/clear.png"
-            //     id="icon2"
-            //     class="img-thumbnail w-25"
-            //     alt="weather description"
-            //     /> -->
-            //     <!-- Weather Info -->
-            //     <div class="card-body">
-            //         <p class="card-text">Max Temp</p>
-            //         <p id="temp1" class="card-text">${temp}</p>
-            //         <p class="card-text">Humidity</p>
-            //         <p id="humidity1" class="card-text">${humidity}</p>
-            //         <p class="card-text">Wind Speed</p>
-            //         <p id="windSpeed1" class="card-text">${windSpeed}</p>
-            //     </div>
-            // </div>`
             document.querySelector("#fiveDayForecast").appendChild(forecastContainer);
-            }  
-            
-        });
-    
-        
+            }
+            addToCityList(city);
+            displayCityHistory(); 
+        });       
 };
 
+// Add city to search history
+function addToCityList(city) {
+    if (!cityList.includes(city)) {
+        cityList.push(city);    
+    }
+};
 
+// Display clickable city history
+function displayCityHistory() {
+    var historyContainer = document.getElementById("searchHistory");
+    historyContainer.innerHTML = "";
+
+    cityList.forEach(function(city) {
+        var cityElement = document.createElement("div");
+        cityElement.textContent = city;
+        cityElement.classList.add("city-item");
+
+        cityElement.addEventListener("click", function() {
+            fetchWeather(city);
+        });
+        historyContainer.appendChild(cityElement);
+    });
+}
+
+// Get city from local storage
+function getCity() {
+    var storedCity = localStorage.getItem("city");
+    if (storedCity) {
+        fetchWeather(storedCity);
+    }
+}
+
+getCity();
 
 
 // ("http://api.openweathermap.org/data/2.5/weather?q=Austin&appid=6636d0f4895a55da96fb3ffcd29a6dd1");
