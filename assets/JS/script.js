@@ -25,9 +25,11 @@ let cityList = [];
 // var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 
 // Search Button
-searchButton.addEventListener('click', fetchWeather, forecastWeather);
+searchButton.addEventListener('click', function() {
     var city = document.getElementById('cityInput').value;
     fetchWeather(city);
+});
+
 
 // // Get city name
 // function getCity() {
@@ -137,7 +139,8 @@ function forecastWeather(query) {
 // Add city to search history
 function addToCityList(city) {
     if (!cityList.includes(city)) {
-        cityList.push(city);    
+        cityList.push(city);
+        localStorage.setItem("cityList", JSON.stringify(cityList));    
     }
 };
 
@@ -163,6 +166,12 @@ function getCity() {
     var storedCity = localStorage.getItem("city");
     if (storedCity) {
         fetchWeather(storedCity);
+    }
+
+    var storedCityList = localStorage.getItem("cityList");
+    if(storedCityList) {
+        cityList = JSON.parse(storedCityList);
+        displayCityHistory();
     }
 }
 
