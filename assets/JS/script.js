@@ -1,24 +1,18 @@
 var APIKey = "6636d0f4895a55da96fb3ffcd29a6dd1";
 var searchButton = document.getElementById("searchBtn");
-
-
-// const city = document.getElementById("cityInput");
-// var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+let cityList = [];
 
 // Search Button
-searchButton.addEventListener('click', fetchWeather, forecastWeather);
-
-// Get city name
-// function getCity() {
-//     let city = document.getElementById("cityInput").value;
-//     document.getElementById("cityName").innerHTML = city;
-//     console.log("button clicked");
-// }
+searchButton.addEventListener('click', function() {
+    var city = document.getElementById('cityInput').value;
+    fetchWeather(city);
+});
 
 // Fetch weather data for city
 // Current Weather
 function fetchWeather(query) {
     let city = document.getElementById("cityInput").value;
+    localStorage.setItem("city", city);
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
     document.getElementById("cityName").innerHTML = city;
     console.log("button clicked");
@@ -105,34 +99,67 @@ function forecastWeather(query) {
                 forecastContainer.appendChild(forecastWindspeed);
 
 
-            //     let forecastHTML = `  <div id="day1" class="card col" style="width:20vw">
-            //     <h5 id="date1" class="card-title p-2">${date}</h5>
-            //     <!-- Icon -->
-            //     <!-- <img
-            //     src="assets/images/clear.png"
-            //     id="icon2"
-            //     class="img-thumbnail w-25"
-            //     alt="weather description"
-            //     /> -->
-            //     <!-- Weather Info -->
-            //     <div class="card-body">
-            //         <p class="card-text">Max Temp</p>
-            //         <p id="temp1" class="card-text">${temp}</p>
-            //         <p class="card-text">Humidity</p>
-            //         <p id="humidity1" class="card-text">${humidity}</p>
-            //         <p class="card-text">Wind Speed</p>
-            //         <p id="windSpeed1" class="card-text">${windSpeed}</p>
-            //     </div>
-            // </div>`
             document.querySelector("#fiveDayForecast").appendChild(forecastContainer);
-            }  
-            
-        });
-    
-        
+            }
+            addToCityList(city);
+            displayCityHistory(); 
+        });       
 };
 
+// Add city to search history
+function addToCityList(city) {
+    if (!cityList.includes(city)) {
+        cityList.push(city);
+        localStorage.setItem("cityList", JSON.stringify(cityList));    
+    }
+};
 
+// Display clickable city history
+function displayCityHistory() {
+    var historyContainer = document.getElementById("searchHistory");
+    historyContainer.innerHTML = "";
+
+    cityList.forEach(function(city) {
+        var cityElement = document.createElement("div");
+        cityElement.textContent = city;
+        cityElement.classList.add("city-item");
+
+        cityElement.addEventListener("click", function() {
+            fetchWeather(city);
+        });
+        historyContainer.appendChild(cityElement);
+    });
+};
+
+// Get city from local storage
+function getCity() {
+    var storedCity = localStorage.getItem("city");
+    if (storedCity) {
+        fetchWeather(storedCity);
+    }
+
+    var storedCityList = localStorage.getItem("cityList");
+    if(storedCityList) {
+        cityList = JSON.parse(storedCityList);
+        displayCityHistory();
+    }
+};
+
+// Add an event listener for city history items to trigger forecast when clicked
+document.addEventListener('DOMContentLoaded', function() {
+    getCity();
+    // Set an event listener for city history items
+    var historyContainer = document.getElementById("searchHistory");
+    historyContainer.addEventListener('click', function(event) {
+        if (event.target.classList.contains('city-item')) {
+            var selectedCity = event.target.textContent;
+            document.getElementById('cityInput').value = selectedCity;
+            fetchWeather(selectedCity);
+        }
+    })
+})
+
+getCity();
 
 
 // ("http://api.openweathermap.org/data/2.5/weather?q=Austin&appid=6636d0f4895a55da96fb3ffcd29a6dd1");
