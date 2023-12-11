@@ -2,42 +2,12 @@ var APIKey = "6636d0f4895a55da96fb3ffcd29a6dd1";
 var searchButton = document.getElementById("searchBtn");
 let cityList = [];
 
-// dropdown
-// function myFunction() {
-//     document.getElementById("myDropdown").classList.toggle("show");
-//   }
-  
-//   // Close the dropdown menu if the user clicks outside of it
-//   window.onclick = function(event) {
-//     if (!event.target.matches('.dropbtn')) {
-//       var dropdowns = document.getElementsByClassName("dropdown-content");
-//       var i;
-//       for (i = 0; i < dropdowns.length; i++) {
-//         var openDropdown = dropdowns[i];
-//         if (openDropdown.classList.contains('show')) {
-//           openDropdown.classList.remove('show');
-//         }
-//       }
-//     }
-//   }
-
-// const city = document.getElementById("cityInput");
-// var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
-
 // Search Button
 searchButton.addEventListener('click', function() {
     var city = document.getElementById('cityInput').value;
     fetchWeather(city);
 });
 
-
-// // Get city name
-// function getCity() {
-//     let storedCity = localStorage.getItem("city");
-//     // document.getElementById("savedCities").innerHTML = storedCity;
-//     // cityList.add(storedCity);
-
-// }
 // Fetch weather data for city
 // Current Weather
 function fetchWeather(query) {
@@ -159,7 +129,7 @@ function displayCityHistory() {
         });
         historyContainer.appendChild(cityElement);
     });
-}
+};
 
 // Get city from local storage
 function getCity() {
@@ -173,7 +143,21 @@ function getCity() {
         cityList = JSON.parse(storedCityList);
         displayCityHistory();
     }
-}
+};
+
+// Add an event listener for city history items to trigger forecast when clicked
+document.addEventListener('DOMContentLoaded', function() {
+    getCity();
+    // Set an event listener for city history items
+    var historyContainer = document.getElementById("searchHistory");
+    historyContainer.addEventListener('click', function(event) {
+        if (event.target.classList.contains('city-item')) {
+            var selectedCity = event.target.textContent;
+            document.getElementById('cityInput').value = selectedCity;
+            fetchWeather(selectedCity);
+        }
+    })
+})
 
 getCity();
 
