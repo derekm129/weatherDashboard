@@ -159,6 +159,8 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 })
 
+// Get weather Icons
+
 getCity();
 
 
