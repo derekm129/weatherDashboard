@@ -14,8 +14,11 @@ function fetchWeather(query) {
     let city = document.getElementById("cityInput").value;
     localStorage.setItem("city", city);
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
+
     document.getElementById("cityName").innerHTML = city;
     console.log("button clicked");
+
+    showWeatherElements();
 
     // Current Weather
     fetch(queryURL)
@@ -31,18 +34,29 @@ function fetchWeather(query) {
             let windSpeed = (data.wind.speed);
             let weatherIcon = (data.weather[0].icon);
             let iconUrl = "https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
-            // let lat = (data.coord.lat);
-            // let lon = (data.coord.lon);
 
             document.getElementById("currentDate").innerHTML = date;
             document.getElementById("currentTemp").innerText = temp.toString();
             document.getElementById("currentHumidity").innerText = humidity.toString();
             document.getElementById("currentWindSpeed").innerText = windSpeed.toString();
             document.getElementById("currentIcon").setAttribute("src", iconUrl);
-            console.log(data);
+           
             forecastWeather();
+        })
+        .catch(function (error) {
+            console.error('Error fetching current weather:', error);
+            hideWeatherElements(); // Hide elements if there's an error
         });
+};
 
+// Show weather elements
+function showWeatherElements() {
+    document.getElementById("mainIcon").classList.remove("hidden");
+};
+
+// Hide weather elements
+function hideWeatherElements() {
+    document.getElementById("mainIcon").classList.add("hidden");
 };
 
 // 5 Day forecast
@@ -166,6 +180,8 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 getCity();
+// hideWeatherElements();
+ 
 
 
 // ("http://api.openweathermap.org/data/2.5/weather?q=Austin&appid=6636d0f4895a55da96fb3ffcd29a6dd1");

@@ -7,16 +7,16 @@
     cursor: pointer;
   }
   
-  .dropbtn:hover, .dropbtn:focus {
+.dropbtn:hover, .dropbtn:focus {
     background-color: #2980B9;
   }
   
-  .dropdown {
+.dropdown {
     position: relative;
     display: inline-block;
   }
   
-  .dropdown-content {
+.dropdown-content {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
@@ -26,7 +26,6 @@
     z-index: 1;
   }
   
-  /* .weatherIcon {
-    width: 20px;
-    height: 20px;
-  } */
+  .hidden {
+    display: none;
+  }
