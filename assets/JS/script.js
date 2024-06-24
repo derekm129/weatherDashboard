@@ -60,6 +60,7 @@ function forecastWeather(query) {
             for (let i = 7; i < 40; i += 8) {
                 let forecast = data.list[i];
                 console.log(forecast);
+
                 let date = new Date(forecast.dt * 1000).toString();
                 date = date.split(' ');
                 date = date[0] + ' ' + date[1] + ' ' + date[2] + ' ' + date[3];
@@ -69,7 +70,10 @@ function forecastWeather(query) {
                 let humidity = (forecast.main.humidity);
                 let windSpeed = (forecast.wind.speed);
 
-                // let weatherIcon = (forecast.weather.icon[0]);
+                // Weather Icon
+                let weatherIcon = forecast.weather[0].icon;
+                let iconUrl = "https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
+
                 let forecastContainer = document.createElement('div');
                 forecastContainer.classList.add('card', 'col')
                 forecastContainer.style.width = '20vw';
@@ -78,10 +82,8 @@ function forecastWeather(query) {
                 forecastDate.classList.add('card-title', 'p-2');
                 forecastDate.textContent = date;
 
-
                 let forecastTemp = document.createElement('p');
                 forecastTemp.textContent = 'Temp: ' + temp;
-
 
                 let forecastHumidity = document.createElement('p');
                 forecastHumidity.textContent = 'Humidity: ' + humidity;
@@ -89,7 +91,15 @@ function forecastWeather(query) {
                 let forecastWindspeed = document.createElement('p');
                 forecastWindspeed.textContent = 'Wind Speed: ' + windSpeed;
 
+                // Create an image element for the weather icon
+                let weatherIconImg = document.createElement('img');
+                weatherIconImg.setAttribute('src', iconUrl);
+                weatherIconImg.setAttribute('alt', 'Weather Icon');
+                weatherIconImg.style.width = '55px';
+                weatherIconImg.style.height = '55px';
+
                 forecastContainer.appendChild(forecastDate);
+                forecastContainer.appendChild(weatherIconImg);
                 forecastContainer.appendChild(forecastTemp);
                 forecastContainer.appendChild(forecastHumidity);
                 forecastContainer.appendChild(forecastWindspeed);
