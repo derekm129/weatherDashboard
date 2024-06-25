@@ -1,17 +1,22 @@
 # Weather Dashboard 
 
 ## Description
-- My motivation for this project was to create a working weather forecast app.
-- I built this project using JavaScript, HTML, CSS, and Bootstrap.
-- This app allows the user to get a weather forecast by typing in the name of their city.
-- I learned from making this application how to integrate an API's functionality into a Javascript application.
+- This application is designed to provide real-time weather forecasts for the user's city of choice. 
+This application uses JavaScript, HTML, CSS, and Bootstrap, and integrates the OpenWeatherMap API.
+This project demonstrates the integration of external API functionalities into a JavaScript-based application.
 
 ## Installation
-- N/A
+- No installation is required for this application. Simply click the link to open in your web browser.
 
 ## Usage
-- Type in the name of your city in the searchbox and select 'search' to display your city's weather forecast. Your search history will be saved.
-![Screenshot](./assets/images/screenshot.png)
+- To use the Weather Dashboard:
+    1. Enter the name of your city in the search box.
+    2. Click the 'Search' button to view the weather forecast for your city.
+    3. The application will save your search history for future reference.
+
+![Screenshot](./assets/images/screenshot1.png)
+
+https://derekm129.github.io/weatherDashboard/
 
 https://derekm129.github.io/weatherDashboard/
 
@@ -19,4 +24,4 @@ https://derekm129.github.io/weatherDashboard/
 N/A
 
 ## License
-MIT
+This project is licensed under the MIT License.
