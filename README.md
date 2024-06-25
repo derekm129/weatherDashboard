@@ -18,8 +18,6 @@ This project demonstrates the integration of external API functionalities into a
 
 https://derekm129.github.io/weatherDashboard/
 
-https://derekm129.github.io/weatherDashboard/
-
 ## Credits
 N/A
 
