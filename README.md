@@ -14,7 +14,7 @@ This project demonstrates the integration of external API functionalities into a
     2. Click the 'Search' button to view the weather forecast for your city.
     3. The application will save your search history for future reference.
 
-![Screenshot](./assets/images/screenshot1.png)
+![Screenshot](./assets/images/wthrScreenshot.png)
 
 https://derekm129.github.io/weatherDashboard/
 
