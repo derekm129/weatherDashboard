@@ -141,6 +141,7 @@ function displayCityHistory() {
 
     cityList.forEach(function (city) {
         var cityElement = document.createElement("div");
+        cityElement.className = 'list-group-item saved-city';
         cityElement.textContent = city;
         cityElement.classList.add("city-item");
 
