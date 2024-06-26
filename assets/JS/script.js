@@ -90,7 +90,7 @@ function forecastWeather(query) {
 
                 let forecastContainer = document.createElement('div');
                 forecastContainer.classList.add('card', 'col')
-                forecastContainer.style.width = '20vw';
+                
 
                 let forecastDate = document.createElement('h5');
                 forecastDate.classList.add('card-title', 'p-2');
@@ -109,8 +109,8 @@ function forecastWeather(query) {
                 let weatherIconImg = document.createElement('img');
                 weatherIconImg.setAttribute('src', iconUrl);
                 weatherIconImg.setAttribute('alt', 'Weather Icon');
-                weatherIconImg.style.width = '55px';
-                weatherIconImg.style.height = '55px';
+                weatherIconImg.style.width = '40px';
+                weatherIconImg.style.height = '40px';
 
                 forecastContainer.appendChild(forecastDate);
                 forecastContainer.appendChild(weatherIconImg);

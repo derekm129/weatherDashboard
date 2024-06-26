@@ -11,6 +11,8 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Weather Forecast</title>
+
+    <!-- Styling -->
     <style>
         body {
             display: flex;
@@ -47,8 +49,53 @@
             background-color: #F7E9D4;
             /* Highlight color on hover */
         }
+
+        #currentIcon {
+            width: 60px;
+            height: 60px;
+        }
+
+        .currentWeather {
+            margin-bottom: 20px;
+        }
+
+        .currentWeather .card {
+            min-height: 350px;
+            /* Adjust this value as needed for taller cards */
+            /* flex: 1 0 290px; Basis is the minimum width */
+            /* max-width: 290px; Ensures cards do not grow too wide */
+        }
+
+        #fiveDayForecast {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        #fiveDayForecast .card {
+            margin: 8px;
+            padding-top: 10px;
+        }
+
+        #fiveDayForecast .card p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-body p {
+            margin: 0.5rem 0;
+        }
     </style>
 </head>
+
+<!-- Body -->
 
 <body>
     <header class="container-fluid bg-primary text-white p-3">
@@ -76,35 +123,36 @@
         </nav>
 
         <!-- Weather Data -->
-        <!-- Current -->
         <div class="content">
             <h2 id="cityName"></h2>
             <div id="weather container">
-                <div class="current weather">
+                <!-- Current Weather -->
+                <div class="currentWeather">
                     <div class="row align-items-start">
-                        <div id="day0" class="card col m-1" style="width:20vw">
-                            <h5 id="currentDate" class="card-title p-2">Date</h5>
-                            <!-- Icon -->
-                            <div id="mainIcon" class="icon hidden">
-                                <img src="" id="currentIcon" class="weatherIcon img-thumbnail w-15"
-                                    alt="current weather icon" />
-                            </div>
-                            <!-- Weather Info -->
-                            <div class="card-body">
-                                <h4>Temperature</h4>
-                                <p id="currentTemp" class="card-text"></p>
-                                <h4>Humidity</h4>
-                                <p id="currentHumidity" class="card-text"></p>
-                                <h4>Windspeed</h4>
-                                <p id="currentWindSpeed" class="card-text"></p>
-                            </div>
+                        <div id="day0" class="card col m-2">
+                            <h4 id="currentDate" class="card-title p-2">Date</h5>
+                                <!-- Icon -->
+                                <div id="mainIcon" class="icon hidden">
+                                    <img src="" id="currentIcon" class="weatherIcon img-thumbnail w-15"
+                                        alt="current weather icon" />
+                                </div>
+                                <!-- Weather Info -->
+                                <div class="card-body p-2">
+                                    <h4>Temperature</h4>
+                                    <p id="currentTemp" class="card-text mb-3"></p>
+                                    <h4>Humidity</h4>
+                                    <p id="currentHumidity" class="card-text mb-3"></p>
+                                    <h4>Windspeed</h4>
+                                    <p id="currentWindSpeed" class="card-text"></p>
+                                </div>
                         </div>
                     </div>
                     <!-- Forecast -->
-                    <!-- Day 1 -->
                     <div id="fiveDayForecast" class="row align-items-start">
-                        <div id="day1" class="card col m-1" style="width:20vw">
-                            <h5 id="date1" class="card-title p-2">Date</h5>
+
+                        <!-- Day 1 -->
+                        <div id="day1" class="card col">
+                            <h5 id=" date1" class="card-title">Date</h5>
                             <!-- Icon -->
                             <div class="icon hidden">
                                 <img src="" id="icon1" class="weatherIcon img-thumbnail w-15" alt="weather icon" />
@@ -121,8 +169,8 @@
                         </div>
 
                         <!-- Day2 -->
-                        <div id="day2" class="card col m-1" style="width:20vw">
-                            <h5 src="" id="date2" class="card-title p-2">Date</h5>
+                        <div id="day2" class="card col">
+                            <h5 src="" id="date2" class="card-title">Date</h5>
                             <!-- Icon -->
                             <div class="icon hidden">
                                 <img src="" id="icon2" class="weatherIcon img-thumbnail w-15" alt="weather icon" />
@@ -139,8 +187,8 @@
                         </div>
 
                         <!-- Day 3 -->
-                        <div src="" id="day3" class="card col m-1" style="width:20vw">
-                            <h5 id="date3" class="card-title p-2">Date</h5>
+                        <div src="" id="day3" class="card col">
+                            <h5 id="date3" class="card-title">Date</h5>
                             <!-- Icon -->
                             <div class="icon hidden">
                                 <img src="" id="icon3" class="weatherIcon img-thumbnail w-15" alt="weather icon" />
@@ -157,8 +205,8 @@
                         </div>
 
                         <!-- Day 4 -->
-                        <div src="" id="day4" class="card col m-1" style="width:20vw">
-                            <h5 id="date4" class="card-title p-2">Date</h5>
+                        <div src="" id="day4" class="card col">
+                            <h5 id="date4" class="card-title">Date</h5>
                             <!-- Icon -->
                             <div class="icon hidden">
                                 <img src="" id="icon4" class="weatherIcon img-thumbnail w-15" alt="weather icon" />
@@ -175,8 +223,8 @@
                         </div>
 
                         <!-- Day 5 -->
-                        <div src="" id="day5" class="card col m-1" style="width:20vw">
-                            <h5 id="date5" class="card-title p-2">Date</h5>
+                        <div src="" id="day5" class="card col">
+                            <h5 id="date5" class="card-title">Date</h5>
                             <!-- Icon -->
                             <div class="icon hidden">
                                 <img src="" id="icon5" class="weatherIcon img-thumbnail w-15" alt="weather icon" />
